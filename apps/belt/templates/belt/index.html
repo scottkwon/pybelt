@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login and Registration</title>
+        <style media="screen">
+            .error{
+                color:red;
+            }
+            .success{
+                color:green;
+            }
+        </style>
+    </head>
+    <body>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <fieldset>
+            <legend>Registration</legend>
+            <form action="/process/" method="post">
+                {% csrf_token %}
+                <label>
+                    <p>First Name: <input type="text" name="first_name"></p>
+                </label>
+                <label>
+                    <p>Last Name: <input type="text" name="last_name"></p>
+                </label>
+                <label>
+                    <p>Email: <input type="text" name="email"></p>
+                </label>
+                <label>
+                    <p>Password: <input type="text" name="password"></p>
+                </label>
+                <label>
+                    <p>Confirm Password: <input type="text" name="confirm_password"></p>
+                </label>
+                <br>
+                <input type="submit" value="Register">
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>Login</legend>
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                <label>
+                    <p>Email: <input type="text" name="email"></p>
+                </label>
+                <label>
+                    <p>Password: <input type="text" name="password"></p>
+                </label>
+                <br>
+                <input type="Submit" value="Login">
+            </form>
+        </fieldset>
+    </body>
+</html>
