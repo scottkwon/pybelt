@@ -11,6 +11,7 @@
                 color:green;
             }
         </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     </head>
     <body>
         {% if messages %}
@@ -20,38 +21,36 @@
         {% endfor %}
         </ul>
         {% endif %}
-        <fieldset>
+        <fieldset class='container'>
             <legend>Registration</legend>
-            <form action="/process/" method="post">
+            <form action="/process/" method="post" class='container'>
                 {% csrf_token %}
                 <label>
-                    <p>First Name: <input type="text" name="first_name"></p>
+                    <p>Name: <input type="text" name="name"></p>
                 </label>
                 <label>
-                    <p>Last Name: <input type="text" name="last_name"></p>
+                    <p>Username: <input type="text" name="username"></p>
                 </label>
                 <label>
-                    <p>Email: <input type="text" name="email"></p>
+                    <p>Password: <input type="password" name="password"></p>
                 </label>
+                <p>* Password must be atleast 8 characters!</p>
                 <label>
-                    <p>Password: <input type="text" name="password"></p>
-                </label>
-                <label>
-                    <p>Confirm Password: <input type="text" name="confirm_password"></p>
+                    <p>Confirm Password: <input type="password" name="confirm_password"></p>
                 </label>
                 <br>
                 <input type="submit" value="Register">
             </form>
         </fieldset>
-        <fieldset>
+        <fieldset class='container'>
             <legend>Login</legend>
-            <form action="/login/" method="post">
+            <form action="/login/" method="post" class='container'>
                 {% csrf_token %}
                 <label>
-                    <p>Email: <input type="text" name="email"></p>
+                    <p>Username: <input type="text" name="username"></p>
                 </label>
                 <label>
-                    <p>Password: <input type="text" name="password"></p>
+                    <p>Password: <input type="password" name="password"></p>
                 </label>
                 <br>
                 <input type="Submit" value="Login">

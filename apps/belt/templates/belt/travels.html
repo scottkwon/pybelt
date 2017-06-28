@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <style media="screen">
+        .error{
+            color:red;
+        }
+        .success{
+            color:green;
+        }
+    </style>
+
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <h1> Hello, {{request.session.username}}!</h1>
+    <P><a href="{% url 'tbuddy:logout' %}">Logout</a></P>
+    <h3> Your Trip Schedules: </h3>
+        <table class="container centered" >
+            <thead>
+                <tr>
+                  <th>Destination</th>
+                  <th>Travel Start Date</th>
+                  <th>Travel End Date</th>
+                  <th>Plan</th>
+                </tr>
+            </thead>
+          <tbody>
+              {% for trip in my_trips %}
+              <tr>
+              <td><a href="{% url 'tbuddy:destination' id=trip.id%}">{{trip.destination}}</a></td>
+              <td>{{trip.start}}</td>
+              <td>{{trip.end}}</td>
+              <td>{{trip.plan}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+    <h3> Other User's Trip Schedules: </h3>
+        <table class="container centered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+            <th>Interested?</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for trip in other_trips%}
+            <tr>
+            <td>{{trip.host.name}}</td>
+            <td>{{trip.destination}}</td>
+            <td>{{trip.start}}</td>
+            <td>{{trip.end}}</td>
+            <td>{{trip.plan}}</td>
+            <td><a href="{% url 'tbuddy:join' id=trip.id%}">Join</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    <a href="{% url 'tbuddy:add' %}">Add Travel Plan</a>
+</body>
+</html>

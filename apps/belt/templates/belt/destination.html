@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Destination</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    </head>
+    <body>
+        <h1>{{trip.destination}}</h1>
+        <p>Planned By: {{trip.host.name}}</p>
+        <p>Description: {{trip.plan}}</p>
+        <p>Travel Start: {{trip.start}}</p>
+        <p>Travel End: {{trip.end}}</p>
+
+        <h3>Other users joining:</h3>
+        {% for user in other_users%}
+            <p>{{user.name}}</p>
+        {% endfor %}
+
+
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Plan</title>
+    <style media="screen">
+        .error{
+            color:red;
+        }
+        .success{
+            color:green;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+</head>
+<body>
+     {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <h1>Add a Trip!</h1>
+    <p><span><a href="{% url 'tbuddy:travels' %}">Home</a> <a href="{% url 'tbuddy:logout' %}">Logout</a></span></p>
+    <br>
+    <form action="{% url 'tbuddy:verify' %}" method='POST' class='container'>
+        {% csrf_token %}
+        <label for="">
+            Destination: <p><input type="text" name='destination'></p>
+        </label>
+        <label for="">
+            Plan: <p><input type="text" name='plan'></p>
+        </label>
+        <label for="">
+            Travel Start Date: <p><input type="date" name='start'></p>
+        </label>
+        <label for="">
+            Travel End Date: <p><input type="date" name='end'></p>
+        </label>
+        <input type="Submit">
+    </form>
+</body>
+</html>
