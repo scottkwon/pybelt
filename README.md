@@ -1,1 +1,4 @@
-Gather your friends and plan a trip! This trip planner helps you keep track of your travel itenerary to be efficient as possible when traveling. 
+Gather your friends and plan a trip! 
+
+
+Built with Django and Materialize this trip planner helps you and your friends keep track of your travel itenerary.
